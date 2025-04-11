@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Quieres ser mi dua 💖💖💖💖?</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive;
+      background: url('https://i.pinimg.com/originals/7d/09/23/7d092331c56351771ba23836fdaeec29.gif') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      z-index: 2;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .button-container {
+      position: relative;
+      width: 400px;
+      height: 150px;
+      z-index: 2;
+    }
+
+    .button {
+      padding: 15px 30px;
+      font-size: 1.5em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      position: absolute;
+    }
+
+    .yes {
+      background-color: #d291bc;
+      color: white;
+      left: 0;
+      top: 0;
+    }
+
+    .no {
+      background-color: #b5838d;
+      color: white;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+    }
+
+    .response {
+      margin-top: 30px;
+      font-size: 1.4em;
+      color: #ffcad4;
+      max-width: 600px;
+      z-index: 2;
+      white-space: pre-wrap;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    #heart-effect {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: pink;
+      opacity: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 80%, 20% 100%, 0% 35%);
+      transition: all 0.6s ease-in-out;
+      z-index: 5;
+    }
+
+    #heart-effect.active {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(2.5);
+    }
+  </style>
+</head>
+<body>
+  <h1>¿Quieres ser mi dua?</h1>
+
+  <div class="button-container">
+    <button class="button yes" onclick="responderPoema()">Sí</button>
+    <button class="button no" id="noBtn">No</button>
+  </div>
+
+  <div class="response" id="respuesta"></div>
+  <div id="heart-effect"></div>
+
+  <script>
+    function responderPoema() {
+      const poema = `Desde el primer instante que te vi,
+supe que algo en mí cambió por ti. 💫
+
+Tus ojos, tus gestos, tu forma de hablar,
+hicieron mi mundo completamente brillar. ✨
+
+Hoy te digo con todo mi corazón,
+Apartie de hoy sere el mejor duo que haya existido, mi vida 💖`;
+
+      document.getElementById('respuesta').textContent = poema;
+      const heartEffect = document.getElementById('heart-effect');
+      heartEffect.classList.add('active');
+      setTimeout(() => {
+        heartEffect.classList.remove('active');
+      }, 1500);
+    }
+
+    const noBtn = document.getElementById('noBtn');
+    noBtn.addEventListener('mouseenter', () => {
+      const container = document.querySelector('.button-container');
+      const maxX = container.offsetWidth - noBtn.offsetWidth;
+      const maxY = container.offsetHeight - noBtn.offsetHeight;
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+      noBtn.style.left = randomX + 'px';
+      noBtn.style.top = randomY + 'px';
+    });
+  </script>
+</body>
+</html>
+
+
